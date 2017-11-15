@@ -11,13 +11,14 @@
 
 
     <ListView
+        android:id="@+id/lista_vendedores"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 
     <Button
-        android:id="@+id/lista_clientes_floating_button"
+        android:id="@+id/lista_vendedores_floating_button"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"

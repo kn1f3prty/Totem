@@ -8,40 +8,83 @@
     tools:context="br.com.totem.totem.CadastroClienteActivity"
     android:padding="10dp">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="235dp">
+        <ImageView
+            android:id="@+id/cliente_foto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#00A8EC"
+            android:src="@drawable/person" />
+
+        <Button
+            android:id="@+id/cliente_foto_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/formulario_foto_button"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
     <EditText
+        android:id="@+id/cliente_nome"
         android:hint="Nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
+        android:id="@+id/cliente_telefone"
         android:hint="Telefone"
+        android:inputType="phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/cliente_email"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/cliente_endereco"
         android:hint="Endereço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <EditText
+        android:id="@+id/cliente_cep"
+        android:hint="CEP"
+        android:inputType="textPostalAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/cliente_site"
         android:hint="Site"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
+    <ListView
+        android:id="@+id/cliente_totem"
         android:hint="Totem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/cliente_vendedor"
         android:hint="Vendedor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/cliente_agenda_button"
         android:hint="Agendar Consulta"
         android:backgroundTint="#42f48f"
         android:layout_width="match_parent"
