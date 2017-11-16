@@ -9,7 +9,7 @@ public class Vendedor {
     private String nome;
     private String telefone;
     private String email;
-    private String loja;
+    private String cliente;
 
     public Long getId() {
         return id;
@@ -43,12 +43,23 @@ public class Vendedor {
         this.email = email;
     }
 
-    public void setLoja(String loja){
-        this.loja = loja;
+    public String getCliente() {
+        return cliente;
     }
 
-    public String getLoja(){
-        return loja;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vendedor(Long id, String nome, String telefone, String email, String cliente) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.cliente = cliente;
+    }
+
+    public Vendedor() {
     }
 
     @Override

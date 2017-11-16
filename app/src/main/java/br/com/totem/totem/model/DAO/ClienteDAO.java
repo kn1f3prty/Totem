@@ -50,19 +50,6 @@ public class ClienteDAO extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(Cliente cliente) {
-        ContentValues values = new ContentValues();
-        values.put("nome", cliente.getNome());
-        values.put("telefone", cliente.getTelefone());
-        values.put("endereco", cliente.getEndereco());
-        values.put("CEP", cliente.getCEP());
-        values.put("id_totem", cliente.getTotem());
-        values.put("id_vendedor", cliente.getVendedor());
-        values.put("site", cliente.getSite());
-
-        getWritableDatabase().insert(TABELA, null, values);
-    }
-
     public List<Cliente> getLista() {
         List<Cliente> clientes = new ArrayList<Cliente>();
         SQLiteDatabase db = getReadableDatabase();
@@ -75,6 +62,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
             cliente.setEndereco(c.getString(c.getColumnIndex("endereco")));
             cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
             cliente.setSite(c.getString(c.getColumnIndex("site")));
+            cliente.setEmail(c.getString(c.getColumnIndex("email")));
             cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
             cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
 
@@ -97,10 +85,66 @@ public class ClienteDAO extends SQLiteOpenHelper {
         cliente.setEndereco(c.getString(c.getColumnIndex("endereco")));
         cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
         cliente.setSite(c.getString(c.getColumnIndex("site")));
+        cliente.setEmail(c.getString(c.getColumnIndex("email")));
         cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
         cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
 
         c.close();
         return  cliente;
+    }
+
+    public void update(Cliente cliente){
+        ContentValues values = new ContentValues();
+        values.put("nome", cliente.getNome());
+        values.put("telefone", cliente.getTelefone());
+        values.put("endereco", cliente.getEndereco());
+        values.put("email", cliente.getEmail());
+        values.put("CEP", cliente.getEndereco());
+        values.put("site", cliente.getSite());
+        values.put("id_vendedor", cliente.getVendedor());
+        values.put("id_totem", cliente.getTotem());
+
+
+        String[] args = {cliente.getId().toString()};
+        getWritableDatabase().update(TABELA, values,"id=?",args);
+    }
+
+    public void insert(Cliente cliente) {
+        ContentValues values = new ContentValues();
+        values.put("nome", cliente.getNome());
+        values.put("telefone", cliente.getTelefone());
+        values.put("endereco", cliente.getEndereco());
+        values.put("CEP", cliente.getCEP());
+        values.put("email", cliente.getEmail());
+        values.put("id_totem", cliente.getTotem());
+        values.put("id_vendedor", cliente.getVendedor());
+        values.put("site", cliente.getSite());
+
+        getWritableDatabase().insert(TABELA, null, values);
+    }
+
+    public void updateOrInsert(Cliente cliente){
+        ContentValues values = new ContentValues();
+        values.put("nome", cliente.getNome());
+        values.put("telefone", cliente.getTelefone());
+        values.put("endereco", cliente.getEndereco());
+        values.put("CEP", cliente.getCEP());
+        values.put("email", cliente.getEmail());
+        values.put("id_totem", cliente.getTotem());
+        values.put("id_vendedor", cliente.getVendedor());
+        values.put("site", cliente.getSite());
+
+        if (cliente.getId() != null){
+            String[] args = {cliente.getId().toString()};
+            getWritableDatabase().update(TABELA, values,"id=?",args);
+        }else{
+            getWritableDatabase().insert(TABELA, null, values);
+        }
+    }
+
+    public void delete(Cliente cliente){
+        SQLiteDatabase db = getWritableDatabase();
+        String[] args = {cliente.getId().toString()};
+        db.delete(TABELA,"id=?",args);
     }
 }

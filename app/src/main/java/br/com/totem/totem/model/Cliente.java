@@ -16,6 +16,7 @@ public class Cliente implements Serializable {
     private String totem;
     private String vendedor;
     private String site;
+    private String email;
 
     public Cliente() {
     }
@@ -93,6 +94,14 @@ public class Cliente implements Serializable {
 
     public void setSite(String site) {
         this.site = site;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
