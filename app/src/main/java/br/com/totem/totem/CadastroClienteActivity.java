@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.totem.totem.model.Cliente;
-import br.com.totem.totem.model.DAO.ClienteDAO;
-import br.com.totem.totem.model.controller.ClienteCtrl;
+import br.com.totem.totem.DAO.ClienteDAO;
+import br.com.totem.totem.controller.ClienteCtrl;
 
 public class CadastroClienteActivity extends AppCompatActivity {
 
@@ -45,7 +45,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
                 if (helper.temNome()) { //Inserir apenas se informou ao menos o nome
                     ClienteDAO cd = new ClienteDAO(CadastroClienteActivity.this);
-                    cd.update(c);
+                    cd.updateOrInsert(c);
                     cd.close();
                     Toast.makeText(this, "Operação realizada com Sucesso", Toast.LENGTH_LONG).show();
                     finish();

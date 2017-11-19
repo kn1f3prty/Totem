@@ -2,12 +2,11 @@ package br.com.totem.totem;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import br.com.totem.totem.model.Cliente;
-import br.com.totem.totem.model.DAO.ClienteDAO;
+import br.com.totem.totem.DAO.ClienteDAO;
 
 /**
  * Created by Renato Nascimento on 11/19/2017.

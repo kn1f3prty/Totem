@@ -1,4 +1,4 @@
-package br.com.totem.totem.model.DAO;
+package br.com.totem.totem.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;

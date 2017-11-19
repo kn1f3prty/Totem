@@ -1,4 +1,4 @@
-package br.com.totem.totem.model.DAO;
+package br.com.totem.totem.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,7 +17,7 @@ import br.com.totem.totem.model.Cliente;
 
 public class ClienteDAO extends SQLiteOpenHelper {
 
-    private static final int VERSAO = 2;
+    private static final int VERSAO = 3;
     private static final String TABELA = "Cliente";
     private static final String BANCO = "TotemDB";
 

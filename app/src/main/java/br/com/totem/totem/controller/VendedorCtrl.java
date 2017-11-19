@@ -1,9 +1,6 @@
-package br.com.totem.totem.model.controller;
+package br.com.totem.totem.controller;
 
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import br.com.totem.totem.CadastroVendedoresActivity;
 import br.com.totem.totem.R;

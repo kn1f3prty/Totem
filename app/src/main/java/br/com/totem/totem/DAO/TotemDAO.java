@@ -1,4 +1,4 @@
-package br.com.totem.totem.model.DAO;
+package br.com.totem.totem.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.totem.totem.model.Cliente;
 import br.com.totem.totem.model.Totem;
 
 

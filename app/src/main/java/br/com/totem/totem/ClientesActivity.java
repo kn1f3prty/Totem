@@ -13,7 +13,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import br.com.totem.totem.model.Cliente;
-import br.com.totem.totem.model.DAO.ClienteDAO;
+import br.com.totem.totem.DAO.ClienteDAO;
 
 public class ClientesActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package br.com.totem.totem.model.controller;
+package br.com.totem.totem.controller;
 
 import android.widget.EditText;
 
@@ -6,7 +6,6 @@ import android.widget.EditText;
 import br.com.totem.totem.CadastroClienteActivity;
 import br.com.totem.totem.R;
 import br.com.totem.totem.model.Cliente;
-import br.com.totem.totem.model.Vendedor;
 
 /**
  * Created by Renato Nascimento on 11/18/2017.
