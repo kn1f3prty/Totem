@@ -9,7 +9,7 @@ public class Vendedor {
     private String nome;
     private String telefone;
     private String email;
-    private String cliente;
+    private Long id_cliente;
 
     public Long getId() {
         return id;
@@ -43,20 +43,20 @@ public class Vendedor {
         this.email = email;
     }
 
-    public String getCliente() {
-        return cliente;
+    public Long getCliente() {
+        return id_cliente;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setCliente(Long cliente) {
+        this.id_cliente = cliente;
     }
 
-    public Vendedor(Long id, String nome, String telefone, String email, String cliente) {
+    public Vendedor(Long id, String nome, String telefone, String email, Long cliente) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.cliente = cliente;
+        this.id_cliente = cliente;
     }
 
     public Vendedor() {

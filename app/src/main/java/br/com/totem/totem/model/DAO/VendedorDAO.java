@@ -55,7 +55,7 @@ public class VendedorDAO extends SQLiteOpenHelper {
             vendedor.setNome(c.getString(c.getColumnIndex("nome")));
             vendedor.setTelefone(c.getString(c.getColumnIndex("telefone")));
             vendedor.setTelefone(c.getString(c.getColumnIndex("email")));
-            vendedor.setCliente(c.getString(c.getColumnIndex("id_cliente")));
+            vendedor.setCliente(c.getLong(c.getColumnIndex("id_cliente")));
 
 
             vendedores.add(vendedor);
@@ -75,7 +75,7 @@ public class VendedorDAO extends SQLiteOpenHelper {
         vendedor.setNome(c.getString(c.getColumnIndex("nome")));
         vendedor.setTelefone(c.getString(c.getColumnIndex("telefone")));
         vendedor.setEmail(c.getString(c.getColumnIndex("email")));
-        vendedor.setCliente(c.getString(c.getColumnIndex("id_cliente")));
+        vendedor.setCliente(c.getLong(c.getColumnIndex("id_cliente")));
 
         c.close();
         return  vendedor;

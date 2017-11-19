@@ -28,9 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/vendedor_loja"
-        android:hint="Loja"
+    <Spinner
+        android:id="@+id/vendedor_cliente"
+        android:hint="Cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     

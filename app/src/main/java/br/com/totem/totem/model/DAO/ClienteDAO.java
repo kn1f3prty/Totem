@@ -17,7 +17,7 @@ import br.com.totem.totem.model.Cliente;
 
 public class ClienteDAO extends SQLiteOpenHelper {
 
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 2;
     private static final String TABELA = "Cliente";
     private static final String BANCO = "TotemDB";
 
@@ -33,12 +33,12 @@ public class ClienteDAO extends SQLiteOpenHelper {
                 + " telefone TEXT, "
                 + " endereco TEXT, "
                 + " email TEXT, "
-                + " site TEXT, "
-                + " id_vendedor INTEGER, "
-                + " FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id), "
-                + " id_totem INTEGER, "
-                + " FOREIGN KEY (id_totem) REFERENCES Totem(id), "
-                + " cep TEXT);";
+                + " site TEXT);";
+                //+ " id_vendedor INTEGER, "
+                //+ " FOREIGN KEY (id_vendedor) REFERENCES Vendedor(id), "
+                //+ " id_totem INTEGER, "
+                //+ " FOREIGN KEY (id_totem) REFERENCES Totem(id), "
+                //+ " cep TEXT);";
 
         db.execSQL(ddl);
     }
@@ -60,11 +60,11 @@ public class ClienteDAO extends SQLiteOpenHelper {
             cliente.setNome(c.getString(c.getColumnIndex("nome")));
             cliente.setTelefone(c.getString(c.getColumnIndex("telefone")));
             cliente.setEndereco(c.getString(c.getColumnIndex("endereco")));
-            cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
+            //cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
             cliente.setSite(c.getString(c.getColumnIndex("site")));
             cliente.setEmail(c.getString(c.getColumnIndex("email")));
-            cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
-            cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
+            //cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
+            //cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
 
             clientes.add(cliente);
         }
@@ -83,11 +83,11 @@ public class ClienteDAO extends SQLiteOpenHelper {
         cliente.setNome(c.getString(c.getColumnIndex("nome")));
         cliente.setTelefone(c.getString(c.getColumnIndex("telefone")));
         cliente.setEndereco(c.getString(c.getColumnIndex("endereco")));
-        cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
+        //cliente.setEndereco(c.getString(c.getColumnIndex("cep")));
         cliente.setSite(c.getString(c.getColumnIndex("site")));
         cliente.setEmail(c.getString(c.getColumnIndex("email")));
-        cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
-        cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
+        //cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
+        //cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
 
         c.close();
         return  cliente;
@@ -99,10 +99,10 @@ public class ClienteDAO extends SQLiteOpenHelper {
         values.put("telefone", cliente.getTelefone());
         values.put("endereco", cliente.getEndereco());
         values.put("email", cliente.getEmail());
-        values.put("CEP", cliente.getEndereco());
+        //values.put("CEP", cliente.getCEP());
         values.put("site", cliente.getSite());
-        values.put("id_vendedor", cliente.getVendedor());
-        values.put("id_totem", cliente.getTotem());
+        //values.put("id_vendedor", cliente.getVendedor());
+        //values.put("id_totem", cliente.getTotem());
 
 
         String[] args = {cliente.getId().toString()};
@@ -114,10 +114,10 @@ public class ClienteDAO extends SQLiteOpenHelper {
         values.put("nome", cliente.getNome());
         values.put("telefone", cliente.getTelefone());
         values.put("endereco", cliente.getEndereco());
-        values.put("CEP", cliente.getCEP());
+        //values.put("CEP", cliente.getCEP());
         values.put("email", cliente.getEmail());
-        values.put("id_totem", cliente.getTotem());
-        values.put("id_vendedor", cliente.getVendedor());
+        //values.put("id_totem", cliente.getTotem());
+        //values.put("id_vendedor", cliente.getVendedor());
         values.put("site", cliente.getSite());
 
         getWritableDatabase().insert(TABELA, null, values);
@@ -128,10 +128,10 @@ public class ClienteDAO extends SQLiteOpenHelper {
         values.put("nome", cliente.getNome());
         values.put("telefone", cliente.getTelefone());
         values.put("endereco", cliente.getEndereco());
-        values.put("CEP", cliente.getCEP());
+        //values.put("CEP", cliente.getCEP());
         values.put("email", cliente.getEmail());
-        values.put("id_totem", cliente.getTotem());
-        values.put("id_vendedor", cliente.getVendedor());
+        //values.put("id_totem", cliente.getTotem());
+        //values.put("id_vendedor", cliente.getVendedor());
         values.put("site", cliente.getSite());
 
         if (cliente.getId() != null){

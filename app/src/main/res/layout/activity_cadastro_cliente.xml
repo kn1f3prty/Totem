@@ -57,31 +57,35 @@
         android:hint="Endereço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+<!---
     <EditText
         android:id="@+id/cliente_cep"
         android:hint="CEP"
         android:inputType="textPostalAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+-->
     <EditText
         android:id="@+id/cliente_site"
         android:hint="Site"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!--
     <ListView
         android:id="@+id/cliente_totem"
         android:hint="Totem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+-->
 
+<!--
     <EditText
         android:id="@+id/cliente_vendedor"
         android:hint="Vendedor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+-->
 
     <Button
         android:id="@+id/cliente_agenda_button"

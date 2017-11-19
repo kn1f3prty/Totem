@@ -12,23 +12,23 @@ public class Cliente implements Serializable {
     private String nome;
     private String telefone;
     private String endereco;
-    private String CEP;
-    private String totem;
-    private String vendedor;
+    //private String CEP;
+    //private String totem;
+    //private String vendedor;
     private String site;
     private String email;
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String telefone, String endereco, String CEP, String totem, String vendedor, String site) {
+    public Cliente(Long id, String nome, String telefone, String endereco, String site) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
-        this.CEP = CEP;
-        this.totem = totem;
-        this.vendedor = vendedor;
+        //this.CEP = CEP;
+        //this.totem = totem;
+        //this.vendedor = vendedor;
         this.site = site;
     }
 
@@ -64,7 +64,7 @@ public class Cliente implements Serializable {
         this.endereco = endereco;
     }
 
-    public String getCEP() {
+    /*public String getCEP() {
         return CEP;
     }
 
@@ -80,13 +80,13 @@ public class Cliente implements Serializable {
         this.totem = totem;
     }
 
-    public String getVendedor() {
+    //public String getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(String vendedor) {
+    //public void setVendedor(String vendedor) {
         this.vendedor = vendedor;
-    }
+    }*/
 
     public String getSite() {
         return site;
