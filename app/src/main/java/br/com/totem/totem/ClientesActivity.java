@@ -3,6 +3,7 @@ package br.com.totem.totem;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -64,8 +65,16 @@ public class ClientesActivity extends AppCompatActivity {
 
         menu.add("Ligar");
         menu.add("Enviar SMS");
-        menu.add("Achar no Mapa");
+
+        MenuItem acharNoMapa = menu.add("Achar no Mapa");
+        Intent intentMapa = new Intent(ClientesActivity.this, MapsActivity.class);
+        intentMapa.putExtra(MapsActivity.CLIENTE_SELECIONADO, clienteSelecionado);
+        acharNoMapa.setIntent(intentMapa);
+
+
+
         menu.add("Navegar no Site");
+
         MenuItem deletar = menu.add("Deletar");
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

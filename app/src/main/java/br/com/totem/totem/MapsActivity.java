@@ -16,13 +16,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.totem.totem.model.Cliente;
+
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private String endereco = "Rua Fernanda de Souza Costa, 45, Nova Iguaçu, RJ, Brasil";
     List<Address> addresses;
     private double latitude = 0;
     private double longitude = 0;
+    public static final String CLIENTE_SELECIONADO = "clienteSelecionado";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +36,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        final Cliente clienteSelecionado = (Cliente) getIntent().getSerializableExtra(CLIENTE_SELECIONADO);
+
         Geocoder geocoder = new Geocoder(this);
-
-
 
 
         while(addresses==null){
             try {
-                addresses = geocoder.getFromLocationName(endereco, 1);
+                addresses = geocoder.getFromLocationName(clienteSelecionado.getEndereco(), 1);
 
             } catch (IOException e) {
                 // TODO Auto-generated catch block

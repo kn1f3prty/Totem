@@ -99,11 +99,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
         values.put("telefone", cliente.getTelefone());
         values.put("endereco", cliente.getEndereco());
         values.put("email", cliente.getEmail());
-        //values.put("CEP", cliente.getCEP());
         values.put("site", cliente.getSite());
-        //values.put("id_vendedor", cliente.getVendedor());
-        //values.put("id_totem", cliente.getTotem());
-
 
         String[] args = {cliente.getId().toString()};
         getWritableDatabase().update(TABELA, values,"id=?",args);
@@ -114,10 +110,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
         values.put("nome", cliente.getNome());
         values.put("telefone", cliente.getTelefone());
         values.put("endereco", cliente.getEndereco());
-        //values.put("CEP", cliente.getCEP());
         values.put("email", cliente.getEmail());
-        //values.put("id_totem", cliente.getTotem());
-        //values.put("id_vendedor", cliente.getVendedor());
         values.put("site", cliente.getSite());
 
         getWritableDatabase().insert(TABELA, null, values);

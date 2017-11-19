@@ -2,6 +2,7 @@ package br.com.totem.totem;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -43,7 +44,8 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
                 Cliente c = this.helper.pegaClienteDoFormulario();
 
-                if (helper.temNome()) { //Inserir apenas se informou ao menos o nome
+                if (helper.temNome() && helper.temEndereco()) { //Inserir apenas se informou ao menos o nome
+
                     ClienteDAO cd = new ClienteDAO(CadastroClienteActivity.this);
                     cd.updateOrInsert(c);
                     cd.close();

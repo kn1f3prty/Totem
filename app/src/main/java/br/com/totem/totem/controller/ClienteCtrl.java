@@ -20,7 +20,7 @@ public class ClienteCtrl {
     private EditText site;
     Cliente cliente;
 
-    public ClienteCtrl (CadastroClienteActivity activity){
+    public ClienteCtrl(CadastroClienteActivity activity) {
         this.cliente = new Cliente();
         this.nome = (EditText) activity.findViewById(R.id.cliente_nome);
         this.telefone = (EditText) activity.findViewById(R.id.cliente_telefone);
@@ -41,7 +41,7 @@ public class ClienteCtrl {
         return cliente;
     }
 
-    public Cliente colocaClienteNoFormulario(Cliente cliente){
+    public void colocaClienteNoFormulario(Cliente cliente) {
 
         nome.setText(cliente.getNome());
         telefone.setText(cliente.getTelefone());
@@ -50,14 +50,20 @@ public class ClienteCtrl {
         site.setText(cliente.getSite());
         //cliente.setAdapter(vendedor.getCliente());
 
-        return cliente;
+        this.cliente = cliente;
     }
 
     public boolean temNome() {
         return !nome.getText().toString().isEmpty();
     }
 
-    public void mostraErro() {
-        nome.setError("Campo não pode ser vazio");
+    public boolean temEndereco() {
+        return !endereco.getText().toString().isEmpty();
     }
+
+    public void mostraErro() {
+        nome.setError("Nome não pode ser vazio!");
+        endereco.setError("Endereço não pode ser vazio!");
+    }
+
 }
