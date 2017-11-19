@@ -134,6 +134,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
         //values.put("id_vendedor", cliente.getVendedor());
         values.put("site", cliente.getSite());
 
+
         if (cliente.getId() != null){
             String[] args = {cliente.getId().toString()};
             getWritableDatabase().update(TABELA, values,"id=?",args);
