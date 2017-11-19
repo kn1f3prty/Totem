@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -14,15 +15,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.io.File;
 import java.util.List;
 
 import br.com.totem.totem.model.Cliente;
+import br.com.totem.totem.controller.ClienteCtrl;
 import br.com.totem.totem.DAO.ClienteDAO;
 
 public class ClientesActivity extends AppCompatActivity {
 
+
     private ListView listaClientes;
     private List<Cliente> clientes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class ClientesActivity extends AppCompatActivity {
 
         Button botaoAdd = (Button) findViewById(R.id.lista_clientes_floating_button);
         assert botaoAdd != null;
+
 
         botaoAdd.setOnClickListener(new View.OnClickListener() {
             @Override

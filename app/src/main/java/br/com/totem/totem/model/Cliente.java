@@ -17,6 +17,7 @@ public class Cliente implements Serializable {
     //private String vendedor;
     private String site;
     private String email;
+    private String caminhoFoto;
 
     public Cliente() {
     }
@@ -102,6 +103,14 @@ public class Cliente implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 
     @Override

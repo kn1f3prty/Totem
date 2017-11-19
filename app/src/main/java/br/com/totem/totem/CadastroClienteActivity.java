@@ -1,11 +1,22 @@
 package br.com.totem.totem;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 import br.com.totem.totem.model.Cliente;
 import br.com.totem.totem.DAO.ClienteDAO;
@@ -13,8 +24,10 @@ import br.com.totem.totem.controller.ClienteCtrl;
 
 public class CadastroClienteActivity extends AppCompatActivity {
 
-    private ClienteCtrl helper;
     public static final String CLIENTE_SELECIONADO = "clienteSelecionado";
+    private static final int TIRA_FOTO = 123;
+    private String localArquivoFoto;
+    private ClienteCtrl helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +41,35 @@ public class CadastroClienteActivity extends AppCompatActivity {
             helper.colocaClienteNoFormulario(clienteSelecionado);
         }
 
+        final Button foto = helper.getFotoButton();
+        foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                localArquivoFoto = getExternalFilesDir(null) + "/" + System.currentTimeMillis() + ".jpg";
+
+                File arquivo = new File(localArquivoFoto);
+                Uri localFoto = Uri.fromFile(arquivo);
+                Intent irParaCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                irParaCamera.putExtra(MediaStore.EXTRA_OUTPUT, localFoto);
+                startActivityForResult(irParaCamera, TIRA_FOTO);
+            }
+        });
+
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == TIRA_FOTO){
+            if(resultCode == Activity.RESULT_OK){
+                helper.carregaImagem(this.localArquivoFoto);
+            }else{
+                this.localArquivoFoto = null;
+            }
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

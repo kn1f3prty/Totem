@@ -17,7 +17,7 @@ import br.com.totem.totem.model.Cliente;
 
 public class ClienteDAO extends SQLiteOpenHelper {
 
-    private static final int VERSAO = 3;
+    private static final int VERSAO = 4;
     private static final String TABELA = "Cliente";
     private static final String BANCO = "TotemDB";
 
@@ -45,7 +45,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS " + TABELA;
+        String sql = "ALTER TABLE " + TABELA + " ADD COLUMN  caminhoFoto TEXT;";
         db.execSQL(sql);
         onCreate(db);
     }
@@ -65,7 +65,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
             cliente.setEmail(c.getString(c.getColumnIndex("email")));
             //cliente.setVendedor(c.getString(c.getColumnIndex("id_vendedor")));
             //cliente.setTotem(c.getString(c.getColumnIndex("id_totem")));
-
+            cliente.setCaminhoFoto(c.getString(c.getColumnIndex("caminhoFoto")));
             clientes.add(cliente);
         }
         c.close();
@@ -126,6 +126,7 @@ public class ClienteDAO extends SQLiteOpenHelper {
         //values.put("id_totem", cliente.getTotem());
         //values.put("id_vendedor", cliente.getVendedor());
         values.put("site", cliente.getSite());
+        values.put("caminhoFoto", cliente.getCaminhoFoto());
 
 
         if (cliente.getId() != null){
