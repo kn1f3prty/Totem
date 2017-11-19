@@ -26,6 +26,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double latitude = 0;
     private double longitude = 0;
     public static final String CLIENTE_SELECIONADO = "clienteSelecionado";
+    private String nomeCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         final Cliente clienteSelecionado = (Cliente) getIntent().getSerializableExtra(CLIENTE_SELECIONADO);
+
+        nomeCliente = clienteSelecionado.getNome();
 
         Geocoder geocoder = new Geocoder(this);
 
@@ -61,11 +64,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap = googleMap;
+        LatLng local = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(local).title(nomeCliente));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(local,18));
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+
     }
 }
