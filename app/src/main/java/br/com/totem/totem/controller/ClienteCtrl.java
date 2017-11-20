@@ -78,12 +78,13 @@ public class ClienteCtrl {
     }
 
     public void carregaImagem(String localArquivoFoto) {
-        Bitmap imagemFoto = BitmapFactory.decodeFile(localArquivoFoto);//OBTER A IMAGEM A PARTIR DA STRING
-        Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, imagemFoto.getWidth(), 300, true);// A IMAGEM ESTÁ GRANDE, PRECISAMOS TRABALHAR COM UMA VERSÃO REDUZIDA
-        fotoCliente.setImageBitmap(imagemFotoReduzida);// SETAR A FOTO NO ATRIBUTO FOTO DO FormularioHelper + SETAR O CAMINHO DA FOTO
+        Bitmap imagemFoto = BitmapFactory.decodeFile(localArquivoFoto);
+        Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, imagemFoto.getWidth(), 300, true);
+        fotoCliente.setImageBitmap(imagemFotoReduzida);
         fotoCliente.setTag(localArquivoFoto);
-        fotoCliente.setScaleType(ImageView.ScaleType.FIT_XY);// A FOTO VAI FICAR ESTRANHA - PARA FAZER COM QUE A FOTO OCUPE TuDO O ESPAÇO DA ImageView USE O COMANDO A SEGUIR
-        imagemFoto.recycle(); // LIMPAR A FOTO GRANDE DA MEMÓRIA
+        fotoCliente.setScaleType(ImageView.ScaleType.FIT_XY);
+        imagemFoto.recycle();
+
     }
 
 

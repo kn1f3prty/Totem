@@ -73,53 +73,28 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_clientes) {
-
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    Intent intent = new Intent(MainActivity.this, ClientesActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-            });
+            Intent intent = new Intent(MainActivity.this, ClientesActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.nav_vendedores) {
-
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    Intent intent = new Intent(MainActivity.this, VendedoresActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-            });
+            Intent intent = new Intent(MainActivity.this, VendedoresActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.nav_totens) {
-
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    Intent intent = new Intent(MainActivity.this, TotensActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-            });
+            Intent intent = new Intent(MainActivity.this, TotensActivity.class);
+            startActivity(intent);
+            return true;
 
         } else if (id == R.id.nav_mapa) {
-
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-            });
-
-        }
+            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+            startActivity(intent);
+            return true;
+    }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+        }
 }

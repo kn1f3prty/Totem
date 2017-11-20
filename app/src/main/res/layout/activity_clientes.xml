@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     tools:context="br.com.totem.totem.ClientesActivity">
 
-
     <ListView
         android:id="@+id/lista_cliente"
         android:layout_width="match_parent"
@@ -31,4 +30,5 @@
         android:textColor="#FFFFFF"
         android:textSize="40sp"
         android:background="@drawable/fundo"/>
+
 </RelativeLayout>

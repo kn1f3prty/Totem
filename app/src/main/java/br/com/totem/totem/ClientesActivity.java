@@ -68,18 +68,21 @@ public class ClientesActivity extends AppCompatActivity {
         // Guardar o cliente selecionado
         final Cliente clienteSelecionado = (Cliente) listaClientes.getAdapter().getItem(info.position);
 
-
-        menu.add("Ligar");
-        menu.add("Enviar SMS");
+        MenuItem ligar = menu.add("Ligar");
+        Intent intentLigar = new Intent(Intent.ACTION_DIAL);
+        intentLigar.setData(Uri.parse("tel:" + clienteSelecionado.getTelefone()));
+        ligar.setIntent(intentLigar);
 
         MenuItem acharNoMapa = menu.add("Achar no Mapa");
         Intent intentMapa = new Intent(ClientesActivity.this, MapsActivity.class);
         intentMapa.putExtra(MapsActivity.CLIENTE_SELECIONADO, clienteSelecionado);
         acharNoMapa.setIntent(intentMapa);
 
-
-
-        menu.add("Navegar no Site");
+        MenuItem site = menu.add("Abrir Site");
+        Intent intentSite = new Intent(Intent.ACTION_VIEW);
+        String http = clienteSelecionado.getSite().contains("http://") ? "" : "http://";
+        intentSite.setData(Uri.parse(http + clienteSelecionado.getSite()));
+        site.setIntent(intentSite);
 
         MenuItem deletar = menu.add("Deletar");
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {

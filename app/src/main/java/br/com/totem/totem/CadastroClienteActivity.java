@@ -2,7 +2,9 @@ package br.com.totem.totem;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +55,15 @@ public class CadastroClienteActivity extends AppCompatActivity {
             }
         });
 
+        Button agendar = (Button) findViewById(R.id.cliente_agenda_button);
+        agendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setData(CalendarContract.Events.CONTENT_URI);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -90,6 +101,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         if(requestCode == TIRA_FOTO){
             if(resultCode == Activity.RESULT_OK){
                 helper.carregaImagem(this.localArquivoFoto);
