@@ -1,6 +1,11 @@
 package br.com.totem.totem.controller;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 //import br.com.totem.totem.CadastroVendedoresActivity;
 import br.com.totem.totem.CadastroClienteActivity;
@@ -18,6 +23,8 @@ public class ClienteCtrl {
     private EditText email;
     private EditText endereco;
     private EditText site;
+    private ImageView fotoCliente;
+    private Button fotoButton;
     Cliente cliente;
 
     public ClienteCtrl(CadastroClienteActivity activity) {
@@ -27,7 +34,8 @@ public class ClienteCtrl {
         this.email = (EditText) activity.findViewById(R.id.cliente_email);
         this.endereco = (EditText) activity.findViewById(R.id.cliente_endereco);
         this.site = (EditText) activity.findViewById(R.id.cliente_site);
-        //this.cliente = (Spinner) activity.findViewById(R.id.vendedor_cliente);
+        this.fotoCliente = (ImageView) activity.findViewById(R.id.cliente_foto);
+        this.fotoButton = (Button) activity.findViewById(R.id.cliente_foto_button);
     }
 
     public Cliente pegaClienteDoFormulario() {
@@ -36,20 +44,19 @@ public class ClienteCtrl {
         cliente.setEmail(email.getText().toString());
         cliente.setEndereco(endereco.getText().toString());
         cliente.setSite(site.getText().toString());
-        //vendedor.setCliente(cliente.getSelectedItemId());
-
+        cliente.setCaminhoFoto((String) fotoCliente.getTag());
         return cliente;
     }
 
     public void colocaClienteNoFormulario(Cliente cliente) {
-
         nome.setText(cliente.getNome());
         telefone.setText(cliente.getTelefone());
         email.setText(cliente.getEmail());
         endereco.setText(cliente.getEndereco());
         site.setText(cliente.getSite());
-        //cliente.setAdapter(vendedor.getCliente());
-
+        if (cliente.getCaminhoFoto() != null) {
+            this.carregaImagem(cliente.getCaminhoFoto());
+        }
         this.cliente = cliente;
     }
 
@@ -65,5 +72,19 @@ public class ClienteCtrl {
         nome.setError("Nome não pode ser vazio!");
         endereco.setError("Endereço não pode ser vazio!");
     }
+
+    public Button getFotoButton() {
+        return fotoButton;
+    }
+
+    public void carregaImagem(String localArquivoFoto) {
+        Bitmap imagemFoto = BitmapFactory.decodeFile(localArquivoFoto);//OBTER A IMAGEM A PARTIR DA STRING
+        Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, imagemFoto.getWidth(), 300, true);// A IMAGEM ESTÁ GRANDE, PRECISAMOS TRABALHAR COM UMA VERSÃO REDUZIDA
+        fotoCliente.setImageBitmap(imagemFotoReduzida);// SETAR A FOTO NO ATRIBUTO FOTO DO FormularioHelper + SETAR O CAMINHO DA FOTO
+        fotoCliente.setTag(localArquivoFoto);
+        fotoCliente.setScaleType(ImageView.ScaleType.FIT_XY);// A FOTO VAI FICAR ESTRANHA - PARA FAZER COM QUE A FOTO OCUPE TuDO O ESPAÇO DA ImageView USE O COMANDO A SEGUIR
+        imagemFoto.recycle(); // LIMPAR A FOTO GRANDE DA MEMÓRIA
+    }
+
 
 }

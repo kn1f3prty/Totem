@@ -102,7 +102,7 @@ public class ClientesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        this.carregaLista();
     }
 
     @Override

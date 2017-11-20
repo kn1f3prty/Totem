@@ -17,19 +17,26 @@ public class Cliente implements Serializable {
     //private String vendedor;
     private String site;
     private String email;
+    private String caminhoFoto;
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
+    }
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String telefone, String endereco, String site) {
+    public Cliente(Long id, String nome, String telefone, String endereco, String site, String caminhoFoto) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
-        //this.CEP = CEP;
-        //this.totem = totem;
-        //this.vendedor = vendedor;
         this.site = site;
+        this.caminhoFoto = caminhoFoto;
     }
 
     public Long getId() {
