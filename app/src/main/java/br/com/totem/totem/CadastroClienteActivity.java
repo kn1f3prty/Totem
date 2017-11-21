@@ -35,7 +35,7 @@ public class CadastroClienteActivity extends AppCompatActivity {
         this.helper = new ClienteCtrl(this);
 
         final Cliente clienteSelecionado = (Cliente) getIntent().getSerializableExtra(CLIENTE_SELECIONADO);
-        if (clienteSelecionado != null){
+        if (clienteSelecionado != null) {
             helper.colocaClienteNoFormulario(clienteSelecionado);
         }
 
@@ -44,13 +44,13 @@ public class CadastroClienteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 localArquivoFoto = getExternalFilesDir(null) +
-                        "/" + System.currentTimeMillis()+ ".jpg";
+                        "/" + System.currentTimeMillis() + ".jpg";
                 File arquivo = new File(localArquivoFoto);
                 Uri localFoto = Uri.fromFile(arquivo);
                 Intent irParaCamera = new
                         Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                irParaCamera.putExtra(MediaStore.EXTRA_OUTPUT,localFoto);
-                startActivityForResult(irParaCamera,TIRA_FOTO);
+                irParaCamera.putExtra(MediaStore.EXTRA_OUTPUT, localFoto);
+                startActivityForResult(irParaCamera, TIRA_FOTO);
 
             }
         });
@@ -101,11 +101,10 @@ public class CadastroClienteActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        if(requestCode == TIRA_FOTO){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == TIRA_FOTO) {
+            if (resultCode == Activity.RESULT_OK) {
                 helper.carregaImagem(this.localArquivoFoto);
-            }else{
+            } else {
                 this.localArquivoFoto = null;
             }
         }

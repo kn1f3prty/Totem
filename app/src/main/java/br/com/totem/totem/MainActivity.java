@@ -1,9 +1,17 @@
 package br.com.totem.totem;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +21,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +50,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -78,23 +98,23 @@ public class MainActivity extends AppCompatActivity
             return true;
 
         } else if (id == R.id.nav_vendedores) {
-            Intent intent = new Intent(MainActivity.this, VendedoresActivity.class);
-            startActivity(intent);
             return true;
 
         } else if (id == R.id.nav_totens) {
-            Intent intent = new Intent(MainActivity.this, TotensActivity.class);
-            startActivity(intent);
+
             return true;
 
         } else if (id == R.id.nav_mapa) {
-            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+            Intent intent = new Intent(MainActivity.this, ApiGeocoding.class);
             startActivity(intent);
             return true;
-    }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-        }
+    }
+
+
+
 }
